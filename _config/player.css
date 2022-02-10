@@ -1,0 +1,654 @@
+@charset "utf-8";
+
+/*body *{ outline: 1px solid #000; } */
+
+/* =============================================================================
+  BG DO PLAYER
+============================================================================== */
+
+body {
+	background-image: url(../_assets/images/player/bg-player.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+} 
+
+a {
+	pointer-events: all;
+}
+
+/* =============================================================================
+  DIMENSÃO DA ÁREA INTEIRA DO PLAYER
+============================================================================== */
+
+#player-area {
+	position: relative;
+	width: 1024px;
+	height: 667px;
+	overflow: hidden;
+	z-index: 2;
+	background-color: #FFFFFF;
+	box-shadow: 0 35px 48px 3px rgba(0,0,0,0.4)
+}
+
+#player-area-extra {
+	position: absolute;
+	width: 1024px;
+	height: 626px;
+}
+
+#animation_container {
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* =============================================================================
+  ÁREA DO TOPO DO PLAYER E FORMATAÇÃO DO TÍTULO DA PÁGINA
+============================================================================== */
+
+.videosub-bar {
+	line-height: 22px !important;
+	width: 100% !important;
+}
+
+.player-top {
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	z-index: 2;
+	background: url(../_assets/images/player/barra-topo-player.png) no-repeat center;
+}
+
+.player-top .page-title {
+	position: absolute;
+    font-family: Open Sans;
+    font-size: 16px;
+    color: #ffffff;
+    right: 55px;
+    top: 9px;
+}
+
+.player-top .course-title {
+    position: absolute;
+    font-family: Open Sans;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 16px;
+    color: #ffffff;
+    left: 123px;
+    top: 9px;
+}
+
+
+.player-top .btn-open-menu {
+	position: absolute;
+	width: 50px;
+	height: 39px;
+    top: 0px;
+    right: 0px;
+	cursor: pointer;
+	/*outline: 2px solid;*/
+	z-index: 10;
+}
+
+/* =============================================================================
+  ÁREA ONDE AS PÁGINAS SÃO CARREGADAS
+============================================================================== */
+
+.page-content {
+	position: relative;
+	width: 1024px;
+	height: 627px;
+	top: 40px;
+	background: #FFFFFF;
+	margin: 0 auto;
+	overflow: hidden;
+	/*box-shadow: 0 0 18px 0px rgba(0,0,0,0.2);*/
+}
+
+
+
+/* =============================================================================
+  ÁREA INFERIOR DO PLAYER E OS BOTÕES: MENU, AJUDA, NAVEGAÇÃO E PROGRESSO
+============================================================================== */
+
+.player-bottom {
+	position: absolute;
+	width: 100%;
+	height: 47px;
+	bottom: 0px;
+	z-index: 1;
+	background: url(../_assets/images/player/logo_rodape.png) no-repeat center;
+	outline: 1px solid;
+}
+
+
+.player-bottom .btn-open-help {
+	position: absolute;
+	width: 47px;
+	height: 32px;
+	top: 29px;
+	left: 154px;
+	cursor: pointer;
+	background: url(../_assets/images/player/icone-ajuda.png) no-repeat center;
+}
+
+.player-bottom .btn-audio {
+	position: absolute;
+	width: 47px;
+	height: 32px;
+	top: 29px;
+	left: 114px;
+	cursor: pointer;
+	background: url(../_assets/images/player/audio-ligado.png) no-repeat center;
+}
+
+.player-bottom .btn-audio.audio-off {
+	background: url(../_assets/images/player/audio-desligado.png) no-repeat center;
+}
+
+.player-bottom .btn-next-page {
+	position: absolute;
+	width: 71px;
+	height: 52px;
+	top: 11px;
+	right: 8px;
+	cursor: pointer;
+	display: none;
+	background: url(../_assets/images/player/seta-direita-player.png) no-repeat center;
+}
+
+.player-bottom .btn-prev-page {
+	position: absolute;
+	width: 71px;
+	height: 52px;
+	top: 11px;
+	right: 109px;
+	cursor: pointer;
+	display: none;
+	background: url(../_assets/images/player/seta-esquerda-player.png) no-repeat center;
+}
+
+.player-bottom .message-status {
+	position: absolute;
+	top: 38px;
+	left: 204px;
+	width: 465px;
+	text-align: left;
+	font-family: Open Sans;
+	font-size: 13px;
+	color: #fff;
+}
+
+.player-bottom .progress-bar {
+	position: absolute;
+	top: 34px;
+	left: 670px;
+	width: 65px;
+	height: 21px;
+	background: url(../_assets/images/player/barra-progresso-bg.png) no-repeat center;
+}
+
+.player-bottom .progress-bar-content {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	opacity: 0;
+	background: url(../_assets/images/player/barra-progresso.png) no-repeat left;
+}
+
+.player-bottom .progress-pages-text {
+	position: absolute;
+	top: 36px;
+	left: 668px;
+	width: 65px;
+	height: 21px;
+	text-align: center;
+	font-family: Open Sans;
+	font-size: 15px;
+	color: #000;
+	opacity: 0;
+}
+
+
+/* =============================================================================
+  TELA AJUDA
+============================================================================== */
+
+.player-help {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	top: 7px;
+	display: none;
+	cursor: pointer;
+	background: url(../_assets/images/player/tela-ajuda.png) no-repeat center;
+}
+
+
+/* =============================================================================
+  MENU ABERTO: BG, POSIÇÃO E BOTÃO FECHAR
+============================================================================== */
+
+.player-menu-mask {
+	position: absolute;
+    top: 40px;
+    right: -1px;
+    width: 394px;
+    height: 627px;
+    overflow: hidden;
+    display: none;
+}
+
+.player-menu-mask .player-menu {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	background: url(../_assets/images/player/menu-player.png) no-repeat center;
+	left: -1px;
+}
+
+.player-menu-mask .player-menu .btn-close-menu {
+	position: absolute;
+    width: 40px;
+    height: 39px;
+    top: 54px;
+    left: 344px;
+    cursor: pointer;
+    /* outline: 1px solid;*/
+}
+
+/* =============================================================================
+  LISTA DO MENU ABERTO
+============================================================================== */
+
+.player-menu-mask .player-menu .menu-itens {
+	position: relative;
+    width: 328px;
+    height: 491px;
+    top: 107px;
+    left: 50px;
+    list-style: none;
+    overflow-y: auto;
+}
+
+.player-menu-mask .player-menu .menu-item {
+	font-family: Open Sans;
+    font-size: 16px;
+    color: #000;
+    border-top: 1px solid #eb1f24;
+    border-bottom: 1px solid #eb1f24;
+    display: block;
+    margin-bottom: -1px;
+    box-sizing: border-box;
+    padding: 6px 0 4px 23px;
+    opacity: 0.4;
+    background-image: url(../_assets/images/player/status-normal.png);
+    background-repeat: no-repeat;
+    background-position: 0px 12px;
+}
+
+.player-menu-mask .player-menu .menu-item.active {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.player-menu-mask .player-menu .menu-item.completed {
+	opacity: 1;
+	cursor: pointer;
+	background-image: url(../_assets/images/player/status-finalizado.png);
+}
+
+.player-menu-mask .player-menu .menu-item.active:hover, 
+.player-menu-mask .player-menu .menu-item.completed:hover {
+	background-color: rgba(0,0,0,0.060);
+}
+
+
+/* =============================================================================
+  TELA DE BOOKMARK
+============================================================================== */
+
+.player-bookmark {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	text-align: center;
+	color: #fff;
+	font-family: Open Sans;
+	font-size: 17px;
+	display: none;
+}
+
+.player-bookmark .bookmark-question{
+	margin-top: 250px;
+}
+
+.player-bookmark a {
+	cursor: pointer;
+	margin: 15px 10px 0 10px;
+	width: 95px;
+	height: 29px;
+	display: inline-block;
+	padding-top: 5px;
+	border-radius: 6px;
+	box-sizing: border-box;
+	transition: background 0.3s ease;
+}
+
+.player-bookmark a:hover {
+	color: #000;
+	background: rgba(255,255,255,0.5);
+}
+
+
+/* =============================================================================
+  TELA DE PLAY MOBILE
+============================================================================== */
+
+.player-screen-mobile {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	display: none;
+	top:0;
+	background: url(../_assets/images/player/play-mobile.png) no-repeat center;
+}
+
+/* =============================================================================
+  PRELOADER
+============================================================================== */
+
+.player-preloader {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left:50%;
+	top:50%;
+	margin: -25px 0 0 -25px;
+	z-index: 1;
+	display: none;
+}
+
+.player-preloader .loader-gif {
+	background: url(../_assets/images/player/preloader.gif);
+	width: inherit;
+	height: inherit;
+}
+
+.player-preloader .count-percent{
+	position: absolute;
+	top:9px;
+    background: none;
+    text-align: center;
+    font-family: Open Sans;
+    color: #fff;
+    font-size: 26px;
+   	width: inherit;
+	height: inherit;
+}
+
+
+/* =============================================================================
+  MODO RETRATO
+============================================================================== */
+
+.portrait-image {
+	position:absolute;
+	z-index:99999;
+	width:100%;
+	height:100%;
+	margin:0;
+	border:0;
+	padding:0;
+	top:0;
+	left:0;
+	background-repeat:no-repeat;
+	background-color:#444444;
+	background-position:center;
+	background-image:url(../_assets/images/player/portrait.png?1);
+	display:none;
+}
+
+
+/* =============================================================================
+  FONTES
+============================================================================== */
+
+
+/* Arial bold */
+@font-face {
+    font-family: 'Arial';
+    src: url('../_assets/font/arial_bold-webfont.woff2') format('woff2'),
+         url('../_assets/font/arial_bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Arial bold italic */
+@font-face {
+    font-family: 'Arial';
+    src: url('../_assets/font/arial_bold_italic-webfont.woff2') format('woff2'),
+         url('../_assets/font/arial_bold_italic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Arial italic */
+@font-face {
+    font-family: 'Arial';
+    src: url('../_assets/font/arial_italic-webfont.woff2') format('woff2'),
+         url('../_assets/font/arial_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Arial */
+@font-face {
+    font-family: 'Arial';
+    src: url('../_assets/font/arial-webfont.woff2') format('woff2'),
+         url('../_assets/font/arial-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Open Sans Bold */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../_assets/font/opensans-bold-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Open Sans Bold Italic */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../_assets/font/opensans-bolditalic-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-bolditalic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Open Sans Italic */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../_assets/font/opensans-italic-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Open Sans Light */
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url('../_assets/font/opensans-light-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Open Sans Light Italic */
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url('../_assets/font/opensans-lightitalic-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Open Sans */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../_assets/font/opensans-regular-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Open Sans Semibold */
+@font-face {
+    font-family: 'Open Sans Semibold';
+    src: url('../_assets/font/opensans-semibold-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Open Sans Semibold Italic */
+@font-face {
+    font-family: 'Open Sans Semibold';
+    src: url('../_assets/font/opensans-semibolditalic-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-semibolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+/* Open Sans Condensed */
+@font-face {
+    font-family: 'Open Sans Condensed';
+    src: url('../_assets/font/opensanscondensed-bold-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensanscondensed-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed Light';
+    src: url('../_assets/font/opensanscondensed-light-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensanscondensed-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Open Sans Condensed Light';
+    src: url('../_assets/font/opensanscondensed-lightitalic-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensanscondensed-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+/* Open Sans Extrabold */
+
+@font-face {
+    font-family: 'Open Sans Extrabold';
+    src: url('../_assets/font/opensans-extrabold-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-extrabold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Open Sans Extrabold';
+    src: url('../_assets/font/opensans-extrabolditalic-webfont.woff2') format('woff2'),
+         url('../_assets/font/opensans-extrabolditalic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+
+}
+@font-face {
+    font-family: 'A.C.M.E. Secret Agent';
+    src: url('../_assets/font/acmesa-webfont.woff2') format('woff2'),
+         url('../_assets/font/acmesa-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'a.c.m.e._secret_agentbold';
+    src: url('../_assets/font/acmesab-webfont.woff2') format('woff2'),
+         url('../_assets/font/acmesab-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'a.c.m.e._secret_agentitalic';
+    src: url('../_assets/font/acmesai-webfont.woff2') format('woff2'),
+         url('../_assets/font/acmesai-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* EDP */
+
+@font-face {
+    font-family: 'EDP Preon Hair';
+    src: url('../_assets/font/edp_preon_light_italic-webfont.woff2') format('woff2'),
+         url('../_assets/font/edp_preon_light_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'EDP Preon Hair';
+    src: url('../_assets/font/edp_preon_light-webfont.woff2') format('woff2'),
+         url('../_assets/font/edp_preon_light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EDP Preon Thin';
+    src: url('../_assets/font/edp_preon_medium_italic-webfont.woff2') format('woff2'),
+         url('../_assets/font/edp_preon_medium_italic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'EDP Preon Thin';
+    src: url('../_assets/font/edp_preon_medium-webfont.woff2') format('woff2'),
+         url('../_assets/font/edp_preon_medium-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EDP Preon';
+    src: url('../_assets/font/edp_preon_regular_italic-webfont.woff2') format('woff2'),
+         url('../_assets/font/edp_preon_regular_italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'EDP Preon';
+    src: url('../_assets/font/edp_preon_regular-webfont.woff2') format('woff2'),
+         url('../_assets/font/edp_preon_regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
